@@ -2,6 +2,7 @@ from functools import lru_cache
 from math import atan2, cos, pi, sin, sqrt
 from pathlib import Path
 import json
+from random import Random
 import sys
 
 import numpy as np
@@ -78,6 +79,32 @@ def backdrop(size, flavor):
         d.line((0,y,w,y), fill="#1d2d3c")
     return im
 
+def starfield(seed,count,x_range,y_range):
+    rng=Random(seed)
+    return [(rng.uniform(*x_range),rng.uniform(*y_range),rng.randint(1,3),rng.random())
+            for _ in range(count)]
+
+HORIZON=starfield(49,102,(19,879),(15,160))
+OPEN_SPACE=starfield(183,84,(7,892),(9,279))
+COLD=("#44668b","#88c9f3","#dbf4ff")
+WARM=("#784950","#e57161","#ffd39b")
+
+def ambient(d,t,points,span,clipped_height,hero=False):
+    for index,(sx,sy,depth,bias) in enumerate(points):
+        x=15+(sx-15+t*span*depth)%span
+        y=(sy+8*sin(TAU*(t+bias)))%clipped_height
+        if hero and 440<x<563 and y>67:
+            continue
+        palette=WARM if index%6==0 else COLD
+        color=palette[depth-1]
+        tail=depth*2 if depth>1 else 0
+        if tail:
+            d.line((x-tail,y+1,x,y),fill=palette[0])
+        dot(d,x,y,.45+depth*.24,color)
+        if depth==3 and index%4==0:
+            d.line((x-2,y,x+3,y),fill=color)
+            d.line((x,y-2,x,y+2),fill=color)
+
 hero_bg=ImageOps.fit(Image.open(ROOT/"sources/observatory.jpg").convert("RGB"),(900,318),method=RESAMPLE)
 overlay=Image.new("RGBA",hero_bg.size)
 shade=ImageDraw.Draw(overlay)
@@ -88,6 +115,13 @@ hero_bg=Image.alpha_composite(hero_bg.convert("RGBA"),overlay).convert("RGB")
 def intro(t):
     im=hero_bg.copy()
     d=ImageDraw.Draw(im)
+    ambient(d,t,HORIZON,870,162,hero=True)
+    streak_x=495+(t*385)%385
+    for i in range(31):
+        x=streak_x-i*2.25
+        if 486<x<881:
+            y=75+(x-486)*.13
+            d.line((x-2,y+.26,x,y),fill=ICE if i<9 else "#4d839f",width=2 if i<7 else 1)
     for i,(radius,tilt,color) in enumerate([(205,-.24,ICE),(170,.31,GOLD),(136,-.53,RED)]):
         half=radius*.26
         phase=TAU*(t*(i+1)+i*.14)
@@ -124,6 +158,7 @@ def warp(card, vertices, output_size):
 def holo(t):
     im=holo_bg.copy()
     d=ImageDraw.Draw(im)
+    ambient(d,t,OPEN_SPACE,870,260)
     wobble=sin(TAU*t)
     d.rounded_rectangle((57,56,335,238),radius=13,fill="#080f19",outline="#30445c")
     card=Image.new("RGBA",(252,178))
@@ -215,6 +250,7 @@ tape_bg=ImageOps.fit(Image.open(ROOT/"sources/cassette.jpg").convert("RGB"),(900
 def tape(t):
     im=tape_bg.copy()
     d=ImageDraw.Draw(im)
+    ambient(d,t,HORIZON[:24],870,37)
     for idx,(x,y) in enumerate([(194,141),(359,116)]):
         a=TAU*t*(1 if idx else -1)+.8
         for j in range(12):
@@ -247,12 +283,15 @@ def replay(t):
     prev=active[max(0,eaten-1)] if eaten else (sent[0]-.75,sent[1])
     def pos(w,day):
         return 37+w*(823/max(52,len(weeks)-1)),59+day*15.0
+    scan=(len(weeks)+3)*t-1
     for week,day,lvl,count in calendar:
         x,y=pos(week,day)
         val=("#213047","#497999","#78a6c4","#e58069","#ffcb8d")[lvl]
         if lvl and activity_index[(week,day)] < eaten:
             val="#283950"
-        d.rounded_rectangle((x-4,y-4,x+4,y+4),radius=2,fill=val)
+        d.rounded_rectangle((x-5,y-5,x+5,y+5),radius=2,fill=val)
+        if abs(week-scan)<1:
+            d.rounded_rectangle((x-6,y-6,x+6,y+6),radius=2,outline=ICE)
     px,py=pos(*prev)
     dx,dy=pos(*sent)
     x,y=px+(dx-px)*fraction,py+(dy-py)*fraction
@@ -263,7 +302,7 @@ def replay(t):
     d.line(ship([(-25,0),(-12,0)]),fill=ICE,width=2)
     d.polygon(ship([(12,-jaw),(-9,-10),(-14,0),(-9,10),(12,jaw),(2,0)]),fill=RED,outline=GOLD)
     d.line(ship([(-7,-4),(-4,-4)]),fill=ICE,width=2)
-    code(d,(29,28),"PUBLIC CONTRIBUTION REPLAY",ICE)
+    code(d,(29,28),"PUBLIC CONTRIBUTION ACTIVITY",ICE)
     code(d,(29,176),f"{eaten:02d} / {len(active)} ACTIVE DAYS EATEN",GOLD)
     code(d,(580,176)," TO ".join(DATA["dates"]),MUTED)
     frame(d,900,205)
@@ -273,6 +312,7 @@ pins_bg=backdrop((900,293),.85)
 def pin_scene(t):
     im=pins_bg.copy()
     d=ImageDraw.Draw(im)
+    ambient(d,t,OPEN_SPACE,870,279)
     pins=PROFILE["pins"]
     swipe=t*7
     for index,pin in enumerate(pins):

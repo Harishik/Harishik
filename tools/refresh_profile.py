@@ -168,24 +168,23 @@ def readme(snapshot, animated):
         for p in snapshot["projects"]
     )
     pins=links((p["title"],p["url"],p["summary"] or "Public pin") for p in user["pins"])
-    index=links([(p["title"],p["url"],p["category"]) for p in snapshot["projects"]] + PAPERS)
+    index=links(PAPERS)
     recent=links((p["title"],p["url"],f"Updated {p['pushed'][:10]}") for p in snapshot.get("recent",[]))
     first,last=snapshot["dates"]
     bio=bounded_text(user.get("bio") or "")
     about="I build AI systems and engineering tools, and publish research on how models perform under changing conditions."
-    return f"""# {bounded_text(user.get('name') or user['login'])}
-
-**AI Engineer & Researcher** · [GitHub]({user['url']}) · [ORCID](https://orcid.org/0009-0007-6781-2803) · [LinkedIn](https://www.linkedin.com/in/harishik-dev-singh-jamwal-b31b60288/) · {jump}
-
-[Selected work](#selected-work) · [Project index](#project-index) · [Pinned work](#pinned-work) · [Contribution replay](#contribution-replay)
-
-{image('observatory', 'Orbital observatory with three tracking signals.')}
+    banner_alt=f"{escape(user.get('name') or user['login'],quote=True)}, AI Engineer and Researcher. Orbital observatory with an animated starfield."
+    return f"""{image('observatory', banner_alt)}
 
 ## About
 
-{image('identity', 'Tilted foil card with the current GitHub avatar. Build the tool. Test the idea. Publish the evidence.')}
+**AI Engineer & Researcher** · [ORCID](https://orcid.org/0009-0007-6781-2803) · [LinkedIn](https://www.linkedin.com/in/harishik-dev-singh-jamwal-b31b60288/) · {jump}
 
 {bio or about}
+
+{image('identity', 'Tilted foil card with the current GitHub avatar. Build the tool. Test the idea. Publish the evidence.')}
+
+[Selected work](#selected-work) · [Project index](#project-index) · [Pinned work](#pinned-work) · [Contribution activity](#contribution-activity)
 
 ## Selected work
 
@@ -209,15 +208,13 @@ def readme(snapshot, animated):
 
 {pins or 'No public pins are set.'}
 
-## Contribution replay
+## Contribution activity
 
-{image('activity-replay','A spacecraft collects active days on the public contribution grid.')}
+{image('activity-replay','A scanning light tracks weekly activity while a spacecraft collects active days across the public contribution calendar.')}
 
-{image('calendar','Animated scan over the public GitHub calendar. Tile intensity is unchanged.')}
+{first} to {last} · **{active} active days** · **{total} public calendar contributions**.
 
-Calendar window: {first} to {last} · **{active} active days** · **{total} public calendar contributions**.
-
-_Project media comes from the public repository documentation. The observatory and cassette artwork is AI-generated._
+_Project media comes from the public repository documentation._
 """
 
 def main():

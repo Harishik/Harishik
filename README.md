@@ -1,16 +1,14 @@
-# Harishik
-
-**AI Engineer & Researcher** · [GitHub](https://github.com/Harishik) · [ORCID](https://orcid.org/0009-0007-6781-2803) · [LinkedIn](https://www.linkedin.com/in/harishik-dev-singh-jamwal-b31b60288/) · [Still images](STATIC.md)
-
-[Selected work](#selected-work) · [Project index](#project-index) · [Pinned work](#pinned-work) · [Contribution replay](#contribution-replay)
-
-<img src="assets/observatory.gif" width="900" alt="Orbital observatory with three tracking signals.">
+<img src="assets/observatory.gif" width="900" alt="Harishik, AI Engineer and Researcher. Orbital observatory with an animated starfield.">
 
 ## About
 
-<img src="assets/identity.gif" width="900" alt="Tilted foil card with the current GitHub avatar. Build the tool. Test the idea. Publish the evidence.">
+**AI Engineer & Researcher** · [ORCID](https://orcid.org/0009-0007-6781-2803) · [LinkedIn](https://www.linkedin.com/in/harishik-dev-singh-jamwal-b31b60288/) · [Still images](STATIC.md)
 
 I build AI systems and engineering tools, and publish research on how models perform under changing conditions.
+
+<img src="assets/identity.gif" width="900" alt="Tilted foil card with the current GitHub avatar. Build the tool. Test the idea. Publish the evidence.">
+
+[Selected work](#selected-work) · [Project index](#project-index) · [Pinned work](#pinned-work) · [Contribution activity](#contribution-activity)
 
 ## Selected work
 
@@ -26,11 +24,6 @@ I build AI systems and engineering tools, and publish research on how models per
 
 <img src="assets/mixtape.gif" width="900" alt="Spinning cassette with an equalizer based on weekly public contribution counts.">
 
-- [**EgoVersa**](https://github.com/Harishik/egoversa) — Spatial reasoning
-- [**DeFeat**](https://github.com/Harishik/defeat-cad) — Engineering tools
-- [**LacunaFrame**](https://github.com/Harishik/lacunaframe) — Video recovery
-- [**SOLACE**](https://github.com/Harishik/solace) — Orbital forecasting
-- [**Photons to Power Laws**](https://github.com/Harishik/photons-to-power-laws) — Gamma-ray burst analysis
 - [**Feature Space Stability**](https://doi.org/10.3390/math14061082) — MRI model generalization
 - [**Autonomous Disaster Reconnaissance**](https://doi.org/10.3390/telecom7020031) — Published robotics survey
 
@@ -52,12 +45,10 @@ I build AI systems and engineering tools, and publish research on how models per
 - [**Hand-Gesture-Recognition**](https://github.com/Harishik/Hand-Gesture-Recognition) — Real-time hand gesture recognition in the browser: 33 gestures, both hands tracked in 3D, trained on 1.3M hands (HaGRIDv2), fully on-device. MediaPipe + PyTorch MLPs + T…
 - [**lacunaframe**](https://github.com/Harishik/lacunaframe) — LacunaFrame: recoverability-aware missing-frame recovery for video. LacunaNet is a hybrid network (differentiable Lucas–Kanade motion prior + learned corrections) that r…
 
-## Contribution replay
+## Contribution activity
 
-<img src="assets/activity-replay.gif" width="900" alt="A spacecraft collects active days on the public contribution grid.">
+<img src="assets/activity-replay.gif" width="900" alt="A scanning light tracks weekly activity while a spacecraft collects active days across the public contribution calendar.">
 
-<img src="assets/calendar.gif" width="900" alt="Animated scan over the public GitHub calendar. Tile intensity is unchanged.">
+2025-11-23 to 2026-11-22 · **45 active days** · **383 public calendar contributions**.
 
-Calendar window: 2025-11-23 to 2026-11-22 · **45 active days** · **383 public calendar contributions**.
-
-_Project media comes from the public repository documentation. The observatory and cassette artwork is AI-generated._
+_Project media comes from the public repository documentation._
