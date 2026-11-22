@@ -2,8 +2,8 @@
   "profile": {
     "login": "Harishik",
     "name": "Harishik",
-    "bio": "",
-    "avatarUrl": "https://avatars.githubusercontent.com/u/117257860?s=400&u=552461e0878b377bdae930564423ad83b58a0a36&v=4",
+    "bio": null,
+    "avatarUrl": "https://avatars.githubusercontent.com/u/117257860?v=4",
     "url": "https://github.com/Harishik",
     "pins": [
       {
@@ -24,7 +24,7 @@
       {
         "title": "photons-to-power-laws",
         "url": "https://github.com/Harishik/photons-to-power-laws",
-        "summary": "From raw telescope frames to gamma-ray burst physics: image subtraction, PSF photometry, multi-instrument light curves through real filter curves, power-law and afterglowpy jet fits to optical, X-ray and radio data with nested sampling, validated on public ZTF images of GRB 221009A and GRB 210204A."
+        "summary": "From raw telescope frames to gamma-ray burst physics: image subtraction, PSF photometry, multi-instrument light curves through real filter curves, power-law and afterglowpy jet fits to optical, X-r…"
       },
       {
         "title": "Hand-Gesture-Recognition",
@@ -34,7 +34,7 @@
       {
         "title": "lacunaframe",
         "url": "https://github.com/Harishik/lacunaframe",
-        "summary": "LacunaFrame: recoverability-aware missing-frame recovery for video. LacunaNet is a hybrid network (differentiable Lucas–Kanade motion prior + learned corrections) that runs on CPU, with pre-registered benchmarks and calibrated uncertainty."
+        "summary": "LacunaFrame: recoverability-aware missing-frame recovery for video. LacunaNet is a hybrid network (differentiable Lucas–Kanade motion prior + learned corrections) that runs on CPU, with pre-registe…"
       }
     ]
   },
@@ -2300,8 +2300,8 @@
     [
       52,
       0,
-      1,
-      8
+      2,
+      11
     ]
   ],
   "dates": [
