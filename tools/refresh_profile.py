@@ -2,7 +2,7 @@
 import argparse
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date
-from html import escape
+from html import escape, unescape
 from io import BytesIO
 import json
 from pathlib import Path
@@ -29,18 +29,6 @@ PAPERS = [
     ("Feature Space Stability", "https://doi.org/10.3390/math14061082", "MRI model generalization"),
     ("Autonomous Disaster Reconnaissance", "https://doi.org/10.3390/telecom7020031", "Published robotics survey"),
 ]
-QUERY = """query($login:String!) {
-  user(login:$login) {
-    login name bio avatarUrl(size:400) url
-    pinnedItems(first:6, types:[REPOSITORY,GIST]) {
-      nodes {
-        __typename
-        ... on Repository { nameWithOwner description url isPrivate }
-        ... on Gist { name description url isPublic }
-      }
-    }
-  }
-}"""
 
 def request(url):
     headers = {"User-Agent": "Harishik-profile-refresh"}
@@ -50,9 +38,32 @@ def request(url):
         raise ValueError(f"Public asset is too large: {url}")
     return data
 
-def gh_json(*args):
-    proc = subprocess.run(["gh", "api", *args], text=True, capture_output=True, check=True)
-    return json.loads(proc.stdout)
+def public_api(path):
+    return json.loads(request(f"https://api.github.com/{path}"))
+
+def public_pins():
+    page = request(f"https://github.com/{LOGIN}").decode()
+    if f'name="octolytics-dimension-user_login" content="{LOGIN}"'.lower() not in page.lower():
+        raise ValueError("Unexpected public profile response")
+    if not re.search(r'<h2\b[^>]*>\s*Pinned\b', page):
+        return []
+    blocks = re.findall(r'<li\b[^>]*class="[^"]*\bjs-pinned-item-list-item\b[^"]*"[^>]*>(.*?)</li>', page, re.S)
+    pins = []
+    for block in blocks:
+        links = re.findall(r'<a\b[^>]+href="([^"]+)"', block)
+        urls = [unescape(link) for link in links if re.fullmatch(r'/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', link)
+                or re.fullmatch(r'https://gist\.github\.com/[A-Za-z0-9_-]+/[0-9a-f]+', link)]
+        if not urls:
+            raise ValueError("Could not read public pin link")
+        dest = urls[0]
+        url = "https://github.com" + dest if dest.startswith("/") else dest
+        description = re.search(r'<p\b[^>]*class="[^"]*\bpinned-item-desc\b[^"]*"[^>]*>(.*?)</p>', block, re.S)
+        summary = unescape(re.sub(r'<[^>]*>',"",description[1])).strip() if description else ""
+        title = dest.rsplit("/",1)[-1] if dest.startswith("/") else (summary or "Gist")
+        pins.append({"title":title,"url":url,"summary":summary})
+    if not 1 <= len(pins) <= 6:
+        raise ValueError("Unexpected number of public pins")
+    return pins
 
 def public_image(url):
     parsed = urlparse(url)
@@ -84,9 +95,9 @@ def read_calendar():
 def read_project(spec, stage):
     slug, title, category, image_path = spec
     try:
-        data = gh_json(f"repos/{LOGIN}/{slug}")
-    except subprocess.CalledProcessError as error:
-        if "HTTP 404" in str(error.stderr or ""):
+        data = public_api(f"repos/{LOGIN}/{slug}")
+    except HTTPError as error:
+        if error.code == 404:
             return None
         raise
     if data["private"]:
@@ -113,21 +124,18 @@ def read_project(spec, stage):
     }
 
 def build_snapshot(stage):
-    response = gh_json("graphql", "-f", "query="+QUERY, "-F", "login="+LOGIN)
-    user = response["data"]["user"]
-    if not user or user["login"].lower() != LOGIN.lower():
+    source = public_api(f"users/{LOGIN}")
+    if source["login"].lower() != LOGIN.lower():
         raise ValueError("Unexpected GitHub account")
-    user["pins"] = [
-        {"title": pin.get("nameWithOwner", pin.get("name","Gist")).split("/")[-1],
-         "url": pin["url"], "summary": pin.get("description") or ""}
-        for pin in user.pop("pinnedItems")["nodes"]
-        if pin and (pin.get("isPrivate") is False or pin.get("isPublic") is True)
-    ]
+    user = {
+        "login":source["login"], "name":source["name"], "bio":source["bio"],
+        "avatarUrl":source["avatar_url"], "url":source["html_url"], "pins":public_pins(),
+    }
     with public_image(user["avatarUrl"]) as avatar:
         avatar.convert("RGB").save(stage/"avatar.jpg",quality=92,optimize=True)
     with ThreadPoolExecutor(max_workers=3) as pool:
         featured = [p for p in pool.map(lambda spec: read_project(spec,stage),PROJECTS) if p]
-    repositories=gh_json(f"users/{LOGIN}/repos", "-f", "type=owner", "-f", "sort=pushed", "-f", "per_page=100", "-X", "GET")
+    repositories=public_api(f"users/{LOGIN}/repos?type=owner&sort=pushed&per_page=100")
     excluded={p["name"].lower() for p in featured} | {LOGIN.lower(), "mars-beacon"}
     recent=[
         {"title":p["name"],"url":p["html_url"],"pushed":p["pushed_at"]}
