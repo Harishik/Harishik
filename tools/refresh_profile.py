@@ -135,6 +135,27 @@ def read_project(spec, stage):
         "url": url, "media": media, "stars": data["stargazers_count"], "pushed": data["pushed_at"],
     }
 
+def public_activity():
+    actions={"PushEvent":"Pushed commits", "PullRequestEvent":"Updated a pull request",
+             "ReleaseEvent":"Published a release", "IssuesEvent":"Updated an issue",
+             "CreateEvent":"Created a repository or branch", "PublicEvent":"Made a repository public"}
+    events=public_api(f"users/{LOGIN}/events/public?per_page=50")
+    activity=[]
+    for event in sorted(events,key=lambda item:item["created_at"],reverse=True):
+        name=event["repo"]["name"]
+        parts=name.split("/")
+        if len(parts)!=2 or parts[0].lower()!=LOGIN.lower() or parts[1].lower() in {LOGIN.lower(),"mars-beacon"}:
+            continue
+        if event["type"] not in actions:
+            continue
+        activity.append({
+            "repo":parts[1], "url":f"https://github.com/{name}",
+            "label":actions[event["type"]], "at":event["created_at"],
+        })
+        if len(activity)==5:
+            break
+    return activity
+
 def build_snapshot(stage):
     source = public_api(f"users/{LOGIN}")
     if source["login"].lower() != LOGIN.lower():
@@ -155,7 +176,8 @@ def build_snapshot(stage):
         if not p["private"] and not p["fork"] and not p["archived"] and p["name"].lower() not in excluded
     ][:4]
     calendar, dates = read_calendar()
-    return {"profile":user,"projects":featured,"recent":recent,"calendar":calendar,"dates":dates}
+    return {"profile":user,"projects":featured,"recent":recent,
+            "activity":public_activity(),"calendar":calendar,"dates":dates}
 
 def bounded_text(value, max_length=170):
     flat = " ".join(value.split())
@@ -183,6 +205,9 @@ def readme(snapshot, animated):
     recent=links((p["title"],p["url"],f"Updated {p['pushed'][:10]}") for p in snapshot.get("recent",[]))
     first,last=snapshot["dates"]
     bio=bounded_text(user.get("bio") or "")
+    activity=links((item["repo"],item["url"],item["label"]+" · "+item["at"][:10])
+                   for item in snapshot.get("activity",[]))
+    activity_panel=image("recent-activity", "An animated signal passes through the latest public repository events.")
     about="I build AI systems and engineering tools, and publish research on how models perform under changing conditions."
     banner_alt=f"{escape(user.get('name') or user['login'],quote=True)}, AI Engineer and Researcher. Orbital observatory with an animated starfield."
     return f"""{image('observatory', banner_alt)}
@@ -195,7 +220,7 @@ def readme(snapshot, animated):
 
 {image('identity', 'Tilted foil card with the current GitHub avatar. Build the tool. Test the idea. Publish the evidence.')}
 
-[Selected work](#selected-work) · [Project index](#project-index)
+[Interactive orbital profile](https://harishik.github.io/Harishik/) · [Selected work](#selected-work) · [Project index](#project-index) · [Contribution replay](#contribution-replay)
 
 ## Selected work
 
@@ -219,6 +244,12 @@ def readme(snapshot, animated):
 
 {first} to {last} · **{active} active days** · **{total} public calendar contributions**.
 
+
+## Recent public activity
+
+{activity_panel}
+
+{activity or "No recent public repository events in the available window."}
 
 _Project media comes from the public repository documentation._
 """

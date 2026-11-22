@@ -8,7 +8,7 @@ I build AI systems and engineering tools, and publish research on how models per
 
 <img src="assets/identity.gif" width="900" alt="Tilted foil card with the current GitHub avatar. Build the tool. Test the idea. Publish the evidence.">
 
-[Selected work](#selected-work) · [Project index](#project-index)
+[Interactive orbital profile](https://harishik.github.io/Harishik/) · [Selected work](#selected-work) · [Project index](#project-index) · [Contribution replay](#contribution-replay)
 
 ## Selected work
 
@@ -40,5 +40,15 @@ I build AI systems and engineering tools, and publish research on how models per
 
 2025-11-23 to 2026-11-22 · **45 active days** · **387 public calendar contributions**.
 
+
+## Recent public activity
+
+<img src="assets/recent-activity.gif" width="900" alt="An animated signal passes through the latest public repository events.">
+
+- [**clipstudio**](https://github.com/Harishik/clipstudio) — Pushed commits · 2026-11-21
+- [**clipstudio**](https://github.com/Harishik/clipstudio) — Pushed commits · 2026-11-21
+- [**clipstudio**](https://github.com/Harishik/clipstudio) — Pushed commits · 2026-11-21
+- [**clipstudio**](https://github.com/Harishik/clipstudio) — Pushed commits · 2026-11-20
+- [**defeat-cad**](https://github.com/Harishik/defeat-cad) — Pushed commits · 2026-11-20
 
 _Project media comes from the public repository documentation._

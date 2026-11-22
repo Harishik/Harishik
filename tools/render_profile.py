@@ -347,6 +347,28 @@ def calendar_view(t):
     frame(d,900,205)
     return im
 
+events_bg=backdrop((900,285),.81)
+def recent_activity(t):
+    im=events_bg.copy()
+    d=ImageDraw.Draw(im)
+    ambient(d,t,OPEN_SPACE,870,279)
+    activity=DATA.get("activity",[])
+    d.line((49,41,49,251),fill="#6e90ac",width=2)
+    cursor=t*len(activity)
+    for index,event in enumerate(activity):
+        y=43+index*48
+        hot=abs(index-cursor)<.7
+        tint=GOLD if hot else ICE
+        d.rounded_rectangle((72,y-17,861,y+23),radius=6,fill="#132236",outline=tint if hot else LINE)
+        dot(d,49,y+1,6 if hot else 4,tint)
+        limited(d,(93,y-9),event["repo"],19,278)
+        limited(d,(400,y-7),event["label"],14,280,MUTED)
+        code(d,(741,y-5),event["at"][:10],tint,13)
+    if not activity:
+        txt(d,(94,104),"No recent public events",25)
+    frame(d,900,285)
+    return im
+
 def export(name, drawing, count, duration, still=.18):
     frames=[drawing(i/count) for i in range(count)]
     drawing(still).save(ASSET/f"{name}.jpg",quality=92,optimize=True)
@@ -367,6 +389,7 @@ scenes = [
     ("activity-replay",replay,130,125,0),
     ("pinned-work",pin_scene,52,120,.05),
     ("calendar",calendar_view,60,110,.15),
+    ("recent-activity",recent_activity,56,110,.1),
 ]
 for scene in scenes:
     export(*scene)

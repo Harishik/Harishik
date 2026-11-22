@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harishik · Orbital profile concept</title>
+<style>
+:root{color-scheme:dark;--ink:#0a101b;--cream:#f9eddd;--muted:#b5c5d5;--ice:#9bd8fa;--gold:#ffc57f;--red:#f3705d;--rule:#2b4054;--mono:ui-monospace,monospace}
+*{box-sizing:border-box}
+html{background:var(--ink)}
+body{margin:0;background:radial-gradient(ellipse at 70% -10%,#1c354c,transparent 49%),var(--ink);color:var(--cream);font:16px/1.55 system-ui,sans-serif}
+main{width:min(900px,calc(100% - 38px));margin:auto;padding:24px 0 48px}
+nav,header{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;font:.78rem/1.5 var(--mono)}
+header{margin-bottom:14px;color:var(--muted)}
+a{color:var(--ice);text-decoration:none}a:hover{text-decoration:underline}
+button{border:1px solid #4c657b;border-radius:5px;background:#172b40;color:var(--cream);font:inherit;cursor:pointer;padding:.55em .85em}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+nav{justify-content:start;padding:13px 0 5px}
+.visual{display:block;width:100%;height:auto;background:#101a2b;border:1px solid #36526a}
+section{margin-top:30px}
+h2{font-size:clamp(1.45rem,4vw,2.2rem);line-height:1.2;letter-spacing:-.045em;margin:0 0 12px}
+p{color:var(--muted);margin:12px 0}
+.worklist,.tracks{margin:0;padding:0;list-style:none}
+.worklist li,.tracks li{display:grid;grid-template-columns:minmax(120px,1fr) minmax(150px,2.5fr);gap:15px;padding:11px 0;border-bottom:1px solid var(--rule)}
+li span{color:var(--muted)}
+.tracks li{grid-template-columns:32px minmax(0,1.1fr) minmax(0,1fr)}
+.tracks b{font:.78rem var(--mono);color:var(--gold)}
+footer{margin-top:28px;padding-top:11px;border-top:1px solid var(--rule);color:var(--muted);font:.76rem/1.5 var(--mono)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:560px){main{width:calc(100% - 22px);padding-top:14px}.worklist li{grid-template-columns:1fr;gap:2px}.tracks li{grid-template-columns:22px 1fr;gap:1px 8px}.tracks li span{grid-column:2}section{margin-top:23px}}
+
+body{background:radial-gradient(ellipse at 75% -15%,#1b334a,transparent 53%),#0a101b}
+.page{width:min(1160px,calc(100% - 44px));margin:auto;padding:23px 0 45px}
+.page-top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:0 0 18px;padding-bottom:13px;border-bottom:1px solid var(--rule);font:.82rem var(--mono);color:var(--muted)}
+.page-top a{margin-left:12px}
+.shell{display:grid;grid-template-columns:192px minmax(0,1fr);gap:26px}
+aside{padding:18px;background:#101a29;border:1px solid var(--rule);border-radius:10px;align-self:start}
+aside img{display:block;width:100%;height:auto;border-radius:7px;border:1px solid #42617a}
+aside h2{font-size:1.48rem;margin:13px 0 2px;letter-spacing:-.025em}
+aside small{color:var(--muted)}
+aside ul{padding:0;margin:13px 0 0;list-style:none;font-size:.84rem}
+aside li+li{margin-top:6px}
+main{width:100%;padding:0;margin:0;min-width:0}
+.readme{background:#0e1724;border:1px solid var(--rule);border-radius:10px;padding:15px}
+.readme header{margin-bottom:12px}
+.readme footer{margin-bottom:0}
+.pin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;list-style:none;margin:0;padding:0}
+.pin-grid li{padding:10px 13px;border:1px solid var(--rule);border-radius:7px;overflow-wrap:anywhere;background:#101a29}
+.pin-grid small{display:block;color:var(--muted);font-size:.74rem}
+.native{padding:12px;border:1px solid var(--rule);background:#101a29;border-radius:7px}
+.calendar{display:grid;grid-template-columns:repeat(53,minmax(0,1fr));grid-template-rows:repeat(7,1fr);gap:3px}
+.calendar i{aspect-ratio:1;border-radius:2px;background:#212d37}
+.calendar i[data-level="1"]{background:#194e3d}.calendar i[data-level="2"]{background:#277a55}.calendar i[data-level="3"]{background:#349b59}.calendar i[data-level="4"]{background:#54c17b}
+.native p{margin-bottom:0;font-size:.76rem}
+@media(max-width:740px){.page{width:calc(100% - 24px)}.shell{grid-template-columns:1fr;gap:14px}aside{display:grid;grid-template-columns:66px 1fr;gap:0 12px;padding:12px}aside img{grid-row:span 3}aside h2{margin-top:0}aside ul{display:flex;flex-wrap:wrap;gap:0 10px;margin-top:3px}aside li+li{margin:0}.readme{padding:9px}.calendar{gap:1px}}
+</style>
+<style>.profile-name{color:var(--cream)}.pin-grid .current-desc{margin-top:3px}.visual+ul{margin-top:6px}.readme #pin-motion+img{margin-bottom:3px}.native .calendar{max-width:900px}</style>
+<style>
+body{background:#090d18;isolation:isolate}
+#space,#flight{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
+#space{z-index:-1;background:radial-gradient(ellipse at 17% 60%,#16304d8c,transparent 47%),radial-gradient(ellipse at 85% 10%,#4c233a91,transparent 43%),#080d19}
+#flight{z-index:3}
+.page{width:min(1120px,calc(100% - 148px));padding-top:25px}
+aside{background:#101a29e8}
+.readme{background:#0e1724e8;box-shadow:0 0 49px #060a1477}
+.page-top{border-bottom-color:#6a627c8c}
+.page-top [aria-label]{color:var(--gold)}
+.readme header{align-items:center}
+.readme header span{font-size:.8rem}
+@media(max-width:850px){.page{width:calc(100% - 93px);margin-left:18px}}
+@media(max-width:560px){.page{width:calc(100% - 26px);margin:auto}.page-top{line-height:1.7}.page-top a{margin-left:0;margin-right:9px}}
+</style>
+
+<style>
+.dynamic-pins,.activity-list{list-style:none;margin:0;padding:0}
+.dynamic-pins{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.dynamic-pins li{isolation:isolate;position:relative;overflow:hidden;padding:15px;border:1px solid #3f6076;border-radius:7px;background:#132338}
+.dynamic-pins li::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 22%,#5bafc633 48%,#ffd19468 51%,transparent 70%);transform:translateX(-140%);animation:pinSweep 7s ease-in-out infinite;animation-play-state:paused}
+[data-motion="true"] .dynamic-pins li::after{animation-play-state:running}
+.dynamic-pins li:nth-child(2n)::after{animation-delay:.6s}
+.dynamic-pins li:nth-child(3n)::after{animation-delay:1.2s}
+@keyframes pinSweep{0%,18%{transform:translateX(-140%)}55%,100%{transform:translateX(140%)}}
+.dynamic-pins a{display:block;font-weight:650;overflow-wrap:anywhere}
+.dynamic-pins span,.activity-list span{font-size:.85rem;color:#b5c5d5}
+.activity-list li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:12px;padding:10px 0;border-bottom:1px solid #2b4054}
+.activity-list time{font:.77rem/1.9 ui-monospace,monospace;color:#ffc57f}
+@media(max-width:560px){.dynamic-pins{grid-template-columns:1fr}.activity-list li{grid-template-columns:1fr auto;gap:1px 8px}.activity-list span{grid-row:2}}
+</style>
+</head>
+<body><canvas id="space" aria-hidden="true"></canvas><canvas id="flight" aria-hidden="true"></canvas>
+
+<div class="page">
+ <div class="page-top"><span>Harishik / orbital profile</span><div><a href="https://github.com/Harishik">GitHub overview ↗</a><a href="https://github.com/Harishik?tab=repositories">Repositories ↗</a></div></div>
+ <div class="shell">
+  <aside aria-label="Public profile sidebar">
+   <img src="https://raw.githubusercontent.com/Harishik/Harishik/main/assets/avatar.jpg" width="400" height="400" alt="Harishik’s current GitHub profile picture">
+   <h2>Harishik</h2><small>@Harishik · South Korea</small>
+   <ul><li><a href="https://orcid.org/0009-0007-6781-2803">ORCID ↗</a></li><li><a href="https://www.linkedin.com/in/harishik-dev-singh-jamwal-b31b60288/">LinkedIn ↗</a></li></ul>
+  </aside>
+  <main><div class="readme">
+
+<header><span>Interactive profile</span><button id="motion" type="button">Play motion</button></header>
+<h1 class="sr">Harishik · AI Engineer &amp; Researcher</h1>
+<img class="visual" src="https://raw.githubusercontent.com/Harishik/Harishik/main/assets/observatory.jpg" data-motion="https://raw.githubusercontent.com/Harishik/Harishik/main/assets/observatory.gif" width="900" height="318" alt="Harishik, AI Engineer and Researcher. Orbital observatory and moving tracking signals.">
+<nav aria-label="Profile sections"><a href="#work">Selected work</a><a href="#index">Project index</a><a href="#pin-motion">Pinned work</a><a href="#activity">Contribution replay</a><a href="#recent-activity">Recent activity</a><a href="https://orcid.org/0009-0007-6781-2803">ORCID ↗</a></nav>
+<section aria-labelledby="about">
+ <h2 id="about" class="sr">About</h2>
+ <img class="visual" src="https://raw.githubusercontent.com/Harishik/Harishik/main/assets/identity.jpg" data-motion="https://raw.githubusercontent.com/Harishik/Harishik/main/assets/identity.gif" width="900" height="281" alt="A tilting foil card with Harishik’s GitHub avatar. Build the tool. Test the idea. Publish the evidence.">
+ <p>I build AI systems and engineering tools, and publish research on how models perform under changing conditions.</p>
+</section>
+<section aria-labelledby="work">
+ <h2 id="work">Selected work</h2>
+ <img class="visual" src="https://raw.githubusercontent.com/Harishik/Harishik/main/assets/project-reel.jpg" data-motion="https://raw.githubusercontent.com/Harishik/Harishik/main/assets/project-reel.gif" width="900" height="344" alt="A cycling reel of all five public featured project visuals.">
+ <ul class="worklist"><li><a href="https://github.com/Harishik/egoversa">EgoVersa ↗</a><span>Spatial-reasoning workbench for viewpoint and perspective-taking in vision-language models</span></li>
+<li><a href="https://github.com/Harishik/defeat-cad">DeFeat ↗</a><span>DeFeat — AI-assisted, open-source CAD defeaturing for simulation (STEP in, simulation-ready STEP + stress check + repor…</span></li>
+<li><a href="https://github.com/Harishik/lacunaframe">LacunaFrame ↗</a><span>LacunaFrame: recoverability-aware missing-frame recovery for video. LacunaNet is a hybrid network (differentiable Lucas…</span></li>
+<li><a href="https://github.com/Harishik/solace">SOLACE ↗</a><span>SOLACE: Solar-cycle-Aware Lifetime And Conformal Estimation — calibrated re-entry and debris-risk forecasting under sol…</span></li>
+<li><a href="https://github.com/Harishik/photons-to-power-laws">Photons to Power Laws ↗</a><span>From raw telescope frames to gamma-ray burst physics: image subtraction, PSF photometry, multi-instrument light curves…</span></li></ul>
+</section>
+<section aria-labelledby="index">
+ <h2 id="index">Project index</h2>
+ <img class="visual" src="https://raw.githubusercontent.com/Harishik/Harishik/main/assets/mixtape.jpg" data-motion="https://raw.githubusercontent.com/Harishik/Harishik/main/assets/mixtape.gif" width="900" height="288" alt="An isometric cassette with spinning reels and an equalizer drawn from weekly GitHub activity.">
+ <ol class="tracks"><li><b>01</b><a href="https://github.com/Harishik/egoversa">EgoVersa ↗</a><span>Spatial reasoning</span></li>
+<li><b>02</b><a href="https://github.com/Harishik/defeat-cad">DeFeat ↗</a><span>Engineering tools</span></li>
+<li><b>03</b><a href="https://github.com/Harishik/lacunaframe">LacunaFrame ↗</a><span>Video recovery</span></li>
+<li><b>04</b><a href="https://github.com/Harishik/solace">SOLACE ↗</a><span>Orbital forecasting</span></li>
+<li><b>05</b><a href="https://github.com/Harishik/photons-to-power-laws">Photons to Power Laws ↗</a><span>Gamma-ray burst analysis</span></li>
+<li><b>06</b><a href="https://doi.org/10.3390/math14061082">Feature Space Stability ↗</a><span>Published MRI research</span></li>
+<li><b>07</b><a href="https://doi.org/10.3390/telecom7020031">Autonomous Disaster Reconnaissance ↗</a><span>Published robotics survey</span></li></ol><h3>Recently updated repositories</h3><ul class="worklist"><li><a href="https://github.com/Harishik/clipstudio">clipstudio ↗</a><span>Updated 2026-11-21</span></li>
+<li><a href="https://github.com/Harishik/Balloon-Shooter">Balloon-Shooter ↗</a><span>Updated 2026-11-11</span></li>
+<li><a href="https://github.com/Harishik/Hand-Gesture-Recognition">Hand-Gesture-Recognition ↗</a><span>Updated 2026-11-11</span></li>
+<li><a href="https://github.com/Harishik/Improving-Cross-Domain-Generalization-in-Brain-MRIs-via-Feature-Space-Stability-Regularization">Improving-Cross-Domain-Generalization-in-Brain-MRIs-via-Feature-Space-Stability-Regularization ↗</a><span>Updated 2026-10-09</span></li></ul>
+</section>
+
+<section aria-labelledby="pin-motion">
+  <h2 id="pin-motion">Pinned repositories</h2>
+  <ul id="orbital-pins-list" class="dynamic-pins"></ul>
+</section>
+
+<section aria-labelledby="activity">
+  <h2 id="activity">Contribution replay</h2>
+  <img class="visual" src="https://raw.githubusercontent.com/Harishik/Harishik/main/assets/activity-replay.jpg" data-motion="https://raw.githubusercontent.com/Harishik/Harishik/main/assets/activity-replay.gif" width="900" height="205" alt="A spacecraft collects the active days on the public contribution grid.">
+  <p id="orbital-calendar-stats"></p>
+</section>
+<section aria-labelledby="recent-activity">
+  <h2 id="recent-activity">Recent public activity</h2>
+  <img class="visual" src="https://raw.githubusercontent.com/Harishik/Harishik/main/assets/recent-activity.jpg" data-motion="https://raw.githubusercontent.com/Harishik/Harishik/main/assets/recent-activity.gif" width="900" height="285" alt="A signal moves through recent public repository events.">
+  <ul id="orbital-activity-list" class="activity-list"></ul>
+</section>
+
+
+</div>
+
+
+
+</main></div></div>
+<script>
+const media = [...document.querySelectorAll("[data-motion]")].map(image => [image,image.getAttribute("src"),image.dataset.motion]);
+const button = document.querySelector("#motion");
+const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+let motion;
+function setMotion(active) {
+  motion = active;
+  for (const [image,still,loop] of media) image.src = active ? loop : still;
+  button.textContent = active ? "Pause motion" : "Play motion";
+}
+button.addEventListener("click", () => setMotion(!motion));
+reduce.addEventListener("change", event => setMotion(!event.matches));
+setMotion(!reduce.matches);
+</script>
+<script src="scroll-flight.js"></script>
+<script type="application/json" id="public-snapshot">{"profile":{"login":"Harishik","name":"Harishik","bio":null,"avatarUrl":"https://avatars.githubusercontent.com/u/117257860?v=4","url":"https://github.com/Harishik","pins":[{"title":"defeat-cad","url":"https://github.com/Harishik/defeat-cad","summary":"DeFeat — AI-assisted, open-source CAD defeaturing for simulation (STEP in, simulation-ready STEP + stress check + report + code out)"},{"title":"solace","url":"https://github.com/Harishik/solace","summary":"SOLACE: Solar-cycle-Aware Lifetime And Conformal Estimation — calibrated re-entry and debris-risk forecasting under solar-cycle uncertainty"},{"title":"egoversa","url":"https://github.com/Harishik/egoversa","summary":"Spatial-reasoning workbench for viewpoint and perspective-taking in vision-language models"},{"title":"photons-to-power-laws","url":"https://github.com/Harishik/photons-to-power-laws","summary":"From raw telescope frames to gamma-ray burst physics: image subtraction, PSF photometry, multi-instrument light curves through real filter curves, power-law and afterglowpy jet fits to optical, X-r…"},{"title":"Hand-Gesture-Recognition","url":"https://github.com/Harishik/Hand-Gesture-Recognition","summary":"Real-time hand gesture recognition in the browser: 33 gestures, both hands tracked in 3D, trained on 1.3M hands (HaGRIDv2), fully on-device. MediaPipe + PyTorch MLPs + Three.js."},{"title":"lacunaframe","url":"https://github.com/Harishik/lacunaframe","summary":"LacunaFrame: recoverability-aware missing-frame recovery for video. LacunaNet is a hybrid network (differentiable Lucas–Kanade motion prior + learned corrections) that runs on CPU, with pre-registe…"}]},"projects":[{"title":"EgoVersa","name":"egoversa","category":"Spatial reasoning","summary":"Spatial-reasoning workbench for viewpoint and perspective-taking in vision-language models","url":"https://github.com/Harishik/egoversa","media":"egoversa.jpg","stars":1,"pushed":"2026-11-22T06:05:13Z"},{"title":"DeFeat","name":"defeat-cad","category":"Engineering tools","summary":"DeFeat — AI-assisted, open-source CAD defeaturing for simulation (STEP in, simulation-ready STEP + stress check + report + code out)","url":"https://github.com/Harishik/defeat-cad","media":"defeat-cad.jpg","stars":1,"pushed":"2026-11-20T13:51:19Z"},{"title":"LacunaFrame","name":"lacunaframe","category":"Video recovery","summary":"LacunaFrame: recoverability-aware missing-frame recovery for video. LacunaNet is a hybrid network (differentiable Lucas–Kanade motion prior + learned corrections) that runs on CPU, with pre-registered benchmarks and calibrated uncertainty.","url":"https://github.com/Harishik/lacunaframe","media":"lacunaframe.jpg","stars":1,"pushed":"2026-11-22T06:19:43Z"},{"title":"SOLACE","name":"solace","category":"Orbital forecasting","summary":"SOLACE: Solar-cycle-Aware Lifetime And Conformal Estimation — calibrated re-entry and debris-risk forecasting under solar-cycle uncertainty","url":"https://github.com/Harishik/solace","media":"solace.jpg","stars":1,"pushed":"2026-11-22T06:16:53Z"},{"title":"Photons to Power Laws","name":"photons-to-power-laws","category":"Gamma-ray burst analysis","summary":"From raw telescope frames to gamma-ray burst physics: image subtraction, PSF photometry, multi-instrument light curves through real filter curves, power-law and afterglowpy jet fits to optical, X-ray and radio data with nested sampling, validated on public ZTF images of GRB 221009A and GRB 210204A.","url":"https://github.com/Harishik/photons-to-power-laws","media":"photons-to-power-laws.jpg","stars":1,"pushed":"2026-10-12T00:39:57Z"}],"recent":[{"title":"clipstudio","url":"https://github.com/Harishik/clipstudio","pushed":"2026-11-21T01:08:07Z"},{"title":"Balloon-Shooter","url":"https://github.com/Harishik/Balloon-Shooter","pushed":"2026-11-11T16:51:21Z"},{"title":"Hand-Gesture-Recognition","url":"https://github.com/Harishik/Hand-Gesture-Recognition","pushed":"2026-11-11T16:14:24Z"},{"title":"Improving-Cross-Domain-Generalization-in-Brain-MRIs-via-Feature-Space-Stability-Regularization","url":"https://github.com/Harishik/Improving-Cross-Domain-Generalization-in-Brain-MRIs-via-Feature-Space-Stability-Regularization","pushed":"2026-10-09T16:35:45Z"}],"activity":[{"repo":"clipstudio","url":"https://github.com/Harishik/clipstudio","label":"Pushed commits","at":"2026-11-21T01:08:08Z"},{"repo":"clipstudio","url":"https://github.com/Harishik/clipstudio","label":"Pushed commits","at":"2026-11-21T00:50:44Z"},{"repo":"clipstudio","url":"https://github.com/Harishik/clipstudio","label":"Pushed commits","at":"2026-11-21T00:35:33Z"},{"repo":"clipstudio","url":"https://github.com/Harishik/clipstudio","label":"Pushed commits","at":"2026-11-20T23:51:15Z"},{"repo":"defeat-cad","url":"https://github.com/Harishik/defeat-cad","label":"Pushed commits","at":"2026-11-20T03:17:44Z"}],"calendar":[[0,0,0,0],[0,1,0,0],[0,2,0,0],[0,3,0,0],[0,4,0,0],[0,5,0,0],[0,6,0,0],[1,0,0,0],[1,1,0,0],[1,2,0,0],[1,3,0,0],[1,4,0,0],[1,5,0,0],[1,6,0,0],[2,0,0,0],[2,1,0,0],[2,2,0,0],[2,3,0,0],[2,4,0,0],[2,5,0,0],[2,6,0,0],[3,0,0,0],[3,1,1,5],[3,2,0,0],[3,3,0,0],[3,4,0,0],[3,5,0,0],[3,6,0,0],[4,0,0,0],[4,1,0,0],[4,2,0,0],[4,3,0,0],[4,4,0,0],[4,5,0,0],[4,6,0,0],[5,0,0,0],[5,1,0,0],[5,2,0,0],[5,3,0,0],[5,4,0,0],[5,5,0,0],[5,6,0,0],[6,0,0,0],[6,1,0,0],[6,2,0,0],[6,3,0,0],[6,4,0,0],[6,5,0,0],[6,6,0,0],[7,0,0,0],[7,1,0,0],[7,2,0,0],[7,3,0,0],[7,4,0,0],[7,5,0,0],[7,6,0,0],[8,0,0,0],[8,1,0,0],[8,2,0,0],[8,3,0,0],[8,4,1,6],[8,5,0,0],[8,6,0,0],[9,0,0,0],[9,1,0,0],[9,2,0,0],[9,3,0,0],[9,4,0,0],[9,5,0,0],[9,6,0,0],[10,0,2,12],[10,1,0,0],[10,2,0,0],[10,3,0,0],[10,4,0,0],[10,5,0,0],[10,6,0,0],[11,0,0,0],[11,1,0,0],[11,2,0,0],[11,3,0,0],[11,4,0,0],[11,5,0,0],[11,6,0,0],[12,0,0,0],[12,1,0,0],[12,2,0,0],[12,3,0,0],[12,4,0,0],[12,5,0,0],[12,6,0,0],[13,0,0,0],[13,1,0,0],[13,2,1,1],[13,3,0,0],[13,4,0,0],[13,5,0,0],[13,6,0,0],[14,0,0,0],[14,1,0,0],[14,2,0,0],[14,3,0,0],[14,4,0,0],[14,5,0,0],[14,6,0,0],[15,0,0,0],[15,1,0,0],[15,2,0,0],[15,3,0,0],[15,4,0,0],[15,5,0,0],[15,6,0,0],[16,0,0,0],[16,1,0,0],[16,2,0,0],[16,3,0,0],[16,4,0,0],[16,5,0,0],[16,6,0,0],[17,0,0,0],[17,1,0,0],[17,2,0,0],[17,3,0,0],[17,4,0,0],[17,5,0,0],[17,6,0,0],[18,0,0,0],[18,1,0,0],[18,2,0,0],[18,3,0,0],[18,4,0,0],[18,5,0,0],[18,6,0,0],[19,0,0,0],[19,1,0,0],[19,2,0,0],[19,3,1,3],[19,4,0,0],[19,5,0,0],[19,6,0,0],[20,0,0,0],[20,1,0,0],[20,2,0,0],[20,3,0,0],[20,4,0,0],[20,5,0,0],[20,6,0,0],[21,0,0,0],[21,1,0,0],[21,2,0,0],[21,3,0,0],[21,4,0,0],[21,5,0,0],[21,6,1,6],[22,0,0,0],[22,1,0,0],[22,2,0,0],[22,3,0,0],[22,4,0,0],[22,5,0,0],[22,6,0,0],[23,0,0,0],[23,1,0,0],[23,2,0,0],[23,3,0,0],[23,4,1,2],[23,5,0,0],[23,6,0,0],[24,0,0,0],[24,1,0,0],[24,2,0,0],[24,3,0,0],[24,4,0,0],[24,5,0,0],[24,6,0,0],[25,0,0,0],[25,1,0,0],[25,2,0,0],[25,3,0,0],[25,4,0,0],[25,5,0,0],[25,6,0,0],[26,0,0,0],[26,1,1,2],[26,2,1,5],[26,3,0,0],[26,4,0,0],[26,5,0,0],[26,6,1,1],[27,0,0,0],[27,1,0,0],[27,2,0,0],[27,3,0,0],[27,4,0,0],[27,5,0,0],[27,6,1,3],[28,0,0,0],[28,1,0,0],[28,2,0,0],[28,3,0,0],[28,4,0,0],[28,5,0,0],[28,6,0,0],[29,0,0,0],[29,1,0,0],[29,2,0,0],[29,3,0,0],[29,4,0,0],[29,5,1,1],[29,6,4,35],[30,0,0,0],[30,1,0,0],[30,2,0,0],[30,3,0,0],[30,4,0,0],[30,5,0,0],[30,6,0,0],[31,0,0,0],[31,1,0,0],[31,2,0,0],[31,3,0,0],[31,4,0,0],[31,5,0,0],[31,6,0,0],[32,0,0,0],[32,1,0,0],[32,2,0,0],[32,3,0,0],[32,4,0,0],[32,5,0,0],[32,6,0,0],[33,0,0,0],[33,1,0,0],[33,2,0,0],[33,3,0,0],[33,4,0,0],[33,5,0,0],[33,6,0,0],[34,0,0,0],[34,1,0,0],[34,2,0,0],[34,3,0,0],[34,4,0,0],[34,5,0,0],[34,6,0,0],[35,0,0,0],[35,1,0,0],[35,2,0,0],[35,3,0,0],[35,4,0,0],[35,5,0,0],[35,6,0,0],[36,0,0,0],[36,1,0,0],[36,2,0,0],[36,3,0,0],[36,4,0,0],[36,5,0,0],[36,6,0,0],[37,0,0,0],[37,1,0,0],[37,2,0,0],[37,3,0,0],[37,4,0,0],[37,5,0,0],[37,6,0,0],[38,0,0,0],[38,1,0,0],[38,2,0,0],[38,3,0,0],[38,4,0,0],[38,5,1,4],[38,6,0,0],[39,0,0,0],[39,1,2,12],[39,2,0,0],[39,3,0,0],[39,4,0,0],[39,5,2,16],[39,6,1,2],[40,0,0,0],[40,1,0,0],[40,2,0,0],[40,3,0,0],[40,4,0,0],[40,5,1,9],[40,6,0,0],[41,0,0,0],[41,1,0,0],[41,2,0,0],[41,3,0,0],[41,4,0,0],[41,5,0,0],[41,6,0,0],[42,0,0,0],[42,1,0,0],[42,2,0,0],[42,3,0,0],[42,4,0,0],[42,5,0,0],[42,6,0,0],[43,0,0,0],[43,1,0,0],[43,2,0,0],[43,3,0,0],[43,4,0,0],[43,5,0,0],[43,6,0,0],[44,0,0,0],[44,1,0,0],[44,2,0,0],[44,3,0,0],[44,4,0,0],[44,5,0,0],[44,6,0,0],[45,0,0,0],[45,1,0,0],[45,2,0,0],[45,3,0,0],[45,4,0,0],[45,5,1,5],[45,6,2,15],[46,0,1,3],[46,1,1,2],[46,2,0,0],[46,3,1,3],[46,4,1,4],[46,5,1,1],[46,6,0,0],[47,0,0,0],[47,1,0,0],[47,2,0,0],[47,3,0,0],[47,4,0,0],[47,5,0,0],[47,6,0,0],[48,0,0,0],[48,1,2,16],[48,2,1,1],[48,3,2,12],[48,4,2,13],[48,5,1,2],[48,6,1,1],[49,0,0,0],[49,1,0,0],[49,2,1,2],[49,3,2,13],[49,4,0,0],[49,5,1,1],[49,6,0,0],[50,0,1,2],[50,1,0,0],[50,2,1,1],[50,3,2,17],[50,4,2,18],[50,5,1,3],[50,6,4,30],[51,0,4,38],[51,1,2,10],[51,2,0,0],[51,3,0,0],[51,4,0,0],[51,5,3,24],[51,6,1,9],[52,0,2,16]],"dates":["2025-11-23","2026-11-22"]}</script>
+<script src="orbital-profile.js"></script>
+</body>
+</html>
