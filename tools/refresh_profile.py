@@ -167,7 +167,6 @@ def readme(snapshot, animated):
         + (f" · Updated {p['pushed'][:10]}" if p.get("pushed") else "")
         for p in snapshot["projects"]
     )
-    pins=links((p["title"],p["url"],p["summary"] or "Public pin") for p in user["pins"])
     index=links(PAPERS)
     recent=links((p["title"],p["url"],f"Updated {p['pushed'][:10]}") for p in snapshot.get("recent",[]))
     first,last=snapshot["dates"]
@@ -184,7 +183,7 @@ def readme(snapshot, animated):
 
 {image('identity', 'Tilted foil card with the current GitHub avatar. Build the tool. Test the idea. Publish the evidence.')}
 
-[Selected work](#selected-work) · [Project index](#project-index) · [Pinned work](#pinned-work) · [Contribution activity](#contribution-activity)
+[Selected work](#selected-work) · [Project index](#project-index)
 
 ## Selected work
 
@@ -202,17 +201,14 @@ def readme(snapshot, animated):
 
 {recent or "No additional public repositories."}
 
-## Pinned work
-
-{image('pinned-work', 'Scanning light travels across the current public GitHub pins.')}
-
-{pins or 'No public pins are set.'}
-
-## Contribution activity
+<details>
+<summary>Animated contribution replay</summary>
 
 {image('activity-replay','A scanning light tracks weekly activity while a spacecraft collects active days across the public contribution calendar.')}
 
 {first} to {last} · **{active} active days** · **{total} public calendar contributions**.
+
+</details>
 
 _Project media comes from the public repository documentation._
 """

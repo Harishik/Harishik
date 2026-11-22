@@ -8,7 +8,7 @@ I build AI systems and engineering tools, and publish research on how models per
 
 <img src="assets/identity.jpg" width="900" alt="Tilted foil card with the current GitHub avatar. Build the tool. Test the idea. Publish the evidence.">
 
-[Selected work](#selected-work) · [Project index](#project-index) · [Pinned work](#pinned-work) · [Contribution activity](#contribution-activity)
+[Selected work](#selected-work) · [Project index](#project-index)
 
 ## Selected work
 
@@ -34,21 +34,13 @@ I build AI systems and engineering tools, and publish research on how models per
 - [**Hand-Gesture-Recognition**](https://github.com/Harishik/Hand-Gesture-Recognition) — Updated 2026-11-11
 - [**Improving-Cross-Domain-Generalization-in-Brain-MRIs-via-Feature-Space-Stability-Regularization**](https://github.com/Harishik/Improving-Cross-Domain-Generalization-in-Brain-MRIs-via-Feature-Space-Stability-Regularization) — Updated 2026-10-09
 
-## Pinned work
-
-<img src="assets/pinned-work.jpg" width="900" alt="Scanning light travels across the current public GitHub pins.">
-
-- [**defeat-cad**](https://github.com/Harishik/defeat-cad) — DeFeat — AI-assisted, open-source CAD defeaturing for simulation (STEP in, simulation-ready STEP + stress check + report + code out)
-- [**solace**](https://github.com/Harishik/solace) — SOLACE: Solar-cycle-Aware Lifetime And Conformal Estimation — calibrated re-entry and debris-risk forecasting under solar-cycle uncertainty
-- [**egoversa**](https://github.com/Harishik/egoversa) — Spatial-reasoning workbench for viewpoint and perspective-taking in vision-language models
-- [**photons-to-power-laws**](https://github.com/Harishik/photons-to-power-laws) — From raw telescope frames to gamma-ray burst physics: image subtraction, PSF photometry, multi-instrument light curves through real filter curves, power-law and afterglo…
-- [**Hand-Gesture-Recognition**](https://github.com/Harishik/Hand-Gesture-Recognition) — Real-time hand gesture recognition in the browser: 33 gestures, both hands tracked in 3D, trained on 1.3M hands (HaGRIDv2), fully on-device. MediaPipe + PyTorch MLPs + T…
-- [**lacunaframe**](https://github.com/Harishik/lacunaframe) — LacunaFrame: recoverability-aware missing-frame recovery for video. LacunaNet is a hybrid network (differentiable Lucas–Kanade motion prior + learned corrections) that r…
-
-## Contribution activity
+<details>
+<summary>Animated contribution replay</summary>
 
 <img src="assets/activity-replay.jpg" width="900" alt="A scanning light tracks weekly activity while a spacecraft collects active days across the public contribution calendar.">
 
 2025-11-23 to 2026-11-22 · **45 active days** · **384 public calendar contributions**.
+
+</details>
 
 _Project media comes from the public repository documentation._
