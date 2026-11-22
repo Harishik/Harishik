@@ -58,6 +58,6 @@ I build AI systems and engineering tools, and publish research on how models per
 
 <img src="assets/calendar.jpg" width="900" alt="Animated scan over the public GitHub calendar. Tile intensity is unchanged.">
 
-Calendar window: 2025-11-23 to 2026-11-22 · **45 active days** · **382 public calendar contributions**.
+Calendar window: 2025-11-23 to 2026-11-22 · **45 active days** · **383 public calendar contributions**.
 
 _Project media comes from the public repository documentation. The observatory and cassette artwork is AI-generated._
