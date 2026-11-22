@@ -4,7 +4,7 @@ The proposed destination is the public profile repository `Harishik/Harishik`.
 The workflow runs there on the default branch, roughly every six hours, or when manually dispatched.
 It updates the README, still edition, public snapshot and rendered images.
 Public pins and the contribution grid are read from the logged-out GitHub profile and calendar.
-GitHub’s workflow token is only used to push generated files to the profile repository.
+GitHub’s workflow token authenticates public REST reads and pushes generated files to the profile repository.
 Repository metadata and the five configured media paths are read from the featured repositories.
 GitHub continues to manage the profile’s native pin cards and contribution graph.
 

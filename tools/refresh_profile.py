@@ -5,6 +5,7 @@ from datetime import date
 from html import escape, unescape
 from io import BytesIO
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -30,16 +31,27 @@ PAPERS = [
     ("Autonomous Disaster Reconnaissance", "https://doi.org/10.3390/telecom7020031", "Published robotics survey"),
 ]
 
-def request(url):
+def request(url, token=None):
     headers = {"User-Agent": "Harishik-profile-refresh"}
-    with urlopen(Request(url, headers=headers), timeout=25) as response:
+    req = Request(url, headers=headers)
+    if token:
+        req.add_unredirected_header("Authorization", f"Bearer {token}")
+    with urlopen(req, timeout=25) as response:
         data = response.read(20_000_001)
     if len(data) > 20_000_000:
         raise ValueError(f"Public asset is too large: {url}")
     return data
 
 def public_api(path):
-    return json.loads(request(f"https://api.github.com/{path}"))
+    url = f"https://api.github.com/{path}"
+    token = os.environ.get("GH_TOKEN")
+    if token:
+        try:
+            return json.loads(request(url, token))
+        except HTTPError as error:
+            if error.code not in {401, 403, 404}:
+                raise
+    return json.loads(request(url))
 
 def public_pins():
     page = request(f"https://github.com/{LOGIN}").decode()

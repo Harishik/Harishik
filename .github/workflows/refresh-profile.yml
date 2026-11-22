@@ -28,6 +28,8 @@ jobs:
           sudo apt-get install -y fonts-dejavu
           python -m pip install -r tools/requirements.txt
       - name: Read public activity and render profile
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: python tools/refresh_profile.py
       - name: Commit generated profile files only
         run: |
