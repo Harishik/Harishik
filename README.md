@@ -34,13 +34,11 @@ I build AI systems and engineering tools, and publish research on how models per
 - [**Hand-Gesture-Recognition**](https://github.com/Harishik/Hand-Gesture-Recognition) — Updated 2026-11-11
 - [**Improving-Cross-Domain-Generalization-in-Brain-MRIs-via-Feature-Space-Stability-Regularization**](https://github.com/Harishik/Improving-Cross-Domain-Generalization-in-Brain-MRIs-via-Feature-Space-Stability-Regularization) — Updated 2026-10-09
 
-<details>
-<summary>Animated contribution replay</summary>
+## Contribution replay
 
 <img src="assets/activity-replay.gif" width="900" alt="A scanning light tracks weekly activity while a spacecraft collects active days across the public contribution calendar.">
 
 2025-11-23 to 2026-11-22 · **45 active days** · **386 public calendar contributions**.
 
-</details>
 
 _Project media comes from the public repository documentation._

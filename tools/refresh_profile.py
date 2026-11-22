@@ -213,14 +213,12 @@ def readme(snapshot, animated):
 
 {recent or "No additional public repositories."}
 
-<details>
-<summary>Animated contribution replay</summary>
+## Contribution replay
 
 {image('activity-replay','A scanning light tracks weekly activity while a spacecraft collects active days across the public contribution calendar.')}
 
 {first} to {last} · **{active} active days** · **{total} public calendar contributions**.
 
-</details>
 
 _Project media comes from the public repository documentation._
 """
