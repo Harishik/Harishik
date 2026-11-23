@@ -48,7 +48,7 @@ I build AI systems and engineering tools, and publish research on how models per
 - [**clipstudio**](https://github.com/Harishik/clipstudio) — Pushed commits · 2026-11-21
 - [**clipstudio**](https://github.com/Harishik/clipstudio) — Pushed commits · 2026-11-21
 - [**clipstudio**](https://github.com/Harishik/clipstudio) — Pushed commits · 2026-11-21
+- [**clipstudio**](https://github.com/Harishik/clipstudio) — Pushed commits · 2026-11-21
 - [**clipstudio**](https://github.com/Harishik/clipstudio) — Pushed commits · 2026-11-20
-- [**defeat-cad**](https://github.com/Harishik/defeat-cad) — Pushed commits · 2026-11-20
 
 _Project media comes from the public repository documentation._
