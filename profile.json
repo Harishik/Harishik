@@ -114,6 +114,12 @@
   ],
   "activity": [
     {
+      "repo": "solace",
+      "url": "https://github.com/Harishik/solace",
+      "label": "Pushed commits",
+      "at": "2026-11-22T06:16:54Z"
+    },
+    {
       "repo": "clipstudio",
       "url": "https://github.com/Harishik/clipstudio",
       "label": "Pushed commits",
@@ -136,12 +142,6 @@
       "url": "https://github.com/Harishik/clipstudio",
       "label": "Pushed commits",
       "at": "2026-11-21T00:21:30Z"
-    },
-    {
-      "repo": "clipstudio",
-      "url": "https://github.com/Harishik/clipstudio",
-      "label": "Pushed commits",
-      "at": "2026-11-20T23:51:15Z"
     }
   ],
   "calendar": [

@@ -45,10 +45,10 @@ I build AI systems and engineering tools, and publish research on how models per
 
 <img src="assets/recent-activity.gif" width="900" alt="An animated signal passes through the latest public repository events.">
 
+- [**solace**](https://github.com/Harishik/solace) — Pushed commits · 2026-11-22
 - [**clipstudio**](https://github.com/Harishik/clipstudio) — Pushed commits · 2026-11-21
 - [**clipstudio**](https://github.com/Harishik/clipstudio) — Pushed commits · 2026-11-21
 - [**clipstudio**](https://github.com/Harishik/clipstudio) — Pushed commits · 2026-11-21
 - [**clipstudio**](https://github.com/Harishik/clipstudio) — Pushed commits · 2026-11-21
-- [**clipstudio**](https://github.com/Harishik/clipstudio) — Pushed commits · 2026-11-20
 
 _Project media comes from the public repository documentation._
