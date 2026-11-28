@@ -38,7 +38,7 @@ I build AI systems and engineering tools, and publish research on how models per
 
 <img src="assets/activity-replay.gif" width="900" alt="A scanning light tracks weekly activity while a spacecraft collects active days across the public contribution calendar.">
 
-2025-11-23 to 2026-11-27 · **45 active days** · **388 public calendar contributions**.
+2025-11-23 to 2026-11-28 · **45 active days** · **388 public calendar contributions**.
 
 
 ## Recent public activity
